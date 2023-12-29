@@ -2,8 +2,9 @@
 import Navbar from "./components/navbar/navbar";
 import { useSearchContext } from "./providers/search";
 import { useFormContext } from "./providers/form";
-
 import Card from "./components/navbar/card";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -12,7 +13,7 @@ import Card from "./components/navbar/card";
 
 const Hero =() =>{
 
-  const {toggleForm,settoggleForm} = useFormContext();
+  const {handleFormChange,toggleForm,settoggleForm} = useFormContext();
   
 
 return(
@@ -21,7 +22,7 @@ return(
   <br/>
   <p className="text-3xl font-semibold mt-7 ">Saves time and Money</p>
   <div className="inline text-white font-semibold text-4xl">Get Started</div>
-  <button onClick={() => {settoggleForm(true)}} className=" mt-6 ml-7 w-[60px] h-[60px] bg-black text-xl font-semibold text-white rounded-full">&rarr;</button>
+  <button onClick={() => {settoggleForm(true);handleFormChange('login')}} className=" mt-6 ml-7 w-[60px] h-[60px] bg-black text-xl font-semibold text-white rounded-full">&rarr;</button>
   </div>
 )
 }
@@ -36,12 +37,12 @@ const Homepage = () => {
  
   return (
     <main >
-
+ <ToastContainer />
         <Navbar />
 
-        <div className={` h-[550px] w-[1200px] mt-16 mx-auto ${SearchShow ? 'h-screen w-screen blur pointer-events-none'  : ''}`}>
+        <div className={` h-[550px] w-[1200px] mt-16 mx-auto ${SearchShow ? '  blur pointer-events-none'  : ''}`}>
 
-        <container className="flex flex-row justify-between h-full w-full ">
+        <container className="flex flex-row justify-between h-full w-full relative">
 
           <section className="h-full w-[52%] ">
               {toggleForm   &&  <Card />}

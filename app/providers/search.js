@@ -10,12 +10,12 @@ export const useSearchContext = () => {
 export const SearchProvider = ({ children }) => {
     const [SearchShow, setSearchShow] = useState(false); 
   
-    const handleSearchShow = () => {
-        setSearchShow(!SearchShow); 
+    const handleSearchShow = (val) => {
+        setSearchShow(val); 
     };
     const contextValue = {
         SearchShow,
-        handleSearchShow,
+        handleSearchShow: setSearchShow,
         setSearchShow
       };
     
